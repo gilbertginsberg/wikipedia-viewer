@@ -4,7 +4,7 @@ html {
 
 body {
   margin: 0;
-  padding: 0;
+  padding: 10px;
   min-height: 100%;
   min-width: 100%;
   display: flex;
@@ -16,7 +16,7 @@ body {
   background-color: #eff5f5;
 }
 
-form {
+#formish {
   margin: 30px;
   border: 5px solid #131f20;
   padding: 25px;
@@ -27,17 +27,17 @@ form {
   width: 800px;
 }
 
-form div {
+#formish div {
   display: flex;
 }
 
-form input {
+#formish input, button {
   border-radius: 10px;
   margin: 2px;
   padding: 1px;
 }
 
-form #search {
+#formish #searchTerm {
   height: 51.25px;
   width: 205px;
   font-size: 125%;
@@ -45,7 +45,7 @@ form #search {
   box-sizing: border-box;
 }
 
-form #submit {
+#formish #submitBtn {
   height: 51.25px;
   width: 75px;
   font-size: 100%;
@@ -54,29 +54,23 @@ form #submit {
   box-sizing: border-box;
 }
 
-#random {
+a:link#randomBtn {
   margin: 30px;
   height: 400px;
   width: 800px;
   background-color: #5F9EA0;
-  border: 1px solid #131f20;
-  padding: 0px;
+  border: 5px solid #131f20;
+  padding: 18% 1%;
   box-sizing: border-box;
   font-size: 200%;
-}
-
-button a:link {
   text-decoration: none;
   color: #551A8B;
-  box-sizing: border-box;
-  padding: 180px 62.92px 180px 61px;
+  text-align: center;
+  vertical-align: middle;
 }
 
-button a:visited {
- color: #551A8B;
-}
-
-button a:hover {
+a:hover#randomBtn {
   color: white;
   background-color: #551A8B;
+  border: 5px solid #5F9EA0;
 }

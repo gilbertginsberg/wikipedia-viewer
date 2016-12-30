@@ -7,17 +7,20 @@
     <link href="styles.css" rel="stylesheet">
     <script src="main.js"></script>
   </head>
-  <body>
-    <form>
+  <body id="body">
+    <div id="formish">
       <h1>Imagine you can find any Wikipedia article...</h1>
       <div>
-      <input type="text" placeholder="You are curious, friend." id="search">
-      <input type="submit" id="submit" value="Learn">
+        <input type="text" placeholder="You are curious, friend." value="" id="searchTerm">
+        <button id="submitBtn">Learn</button>
+      </div>
     </div>
-    </form>
 
-    <p>Or imagine clicking a big huge scrumdiddlyumptious button that'll transport you to a random and wonderful Wikipedia entry...</p>
+    <div id="entriesContainer"><div id="#"></div></div>
 
-    <button id="random"><a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">BIG HUGE SCRUMDIDDLYUMPTIOUS BUTTTON</a></button>
+    <p>And imagine clicking a big huge scrumdiddlyumptious button that'll transport you to a random and wonderful Wikipedia entry...</p>
+
+    <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank" id="randomBtn">BIG HUGE SCRUMDIDDLYUMPTIOUS BUTTTON</a>
+
   </body>
 </html>
