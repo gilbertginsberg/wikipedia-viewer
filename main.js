@@ -6,7 +6,7 @@ function initialize() {
 }
 
 function submitButtonHandler() {
-  var searchTerm = document.getElementById("searchTerm");
+  const searchTerm = document.getElementById("searchTerm");
 
     if (!searchTerm.value) {
       console.log("User didn't type in a search term.");
@@ -38,31 +38,45 @@ function submitButtonHandler() {
     console.log(data);
     var objOfEntries = data.query.pages;
 
+    //safari polyfill for Object.entries
+    const reduce = Function.bind.call(Function.call, Array.prototype.reduce);
+    const isEnumerable = Function.bind.call(Function.call, Object.prototype.propertyIsEnumerable);
+    const concat = Function.bind.call(Function.call, Array.prototype.concat);
+    const keys = Reflect.ownKeys;
+
+    if (!Object.entries) {
+	     Object.entries = function entries(O) {
+		       return reduce(keys(O), (e, k) => concat(e, typeof k === 'string' && isEnumerable(O, k) ? [[k, O[k]]] : []), []);
+	       };
+        }
+
     var arrOfEntries = Object.entries(objOfEntries);
 
     console.log(arrOfEntries);
 
     var entriesContainer = document.getElementById("entriesContainer");
 
-    if (entriesContainer.firstChild.id === "#") {
+    if (entriesContainer.firstChild.id === "nosearchyet") {
       var entries = entriesContainer.firstChild;
       entries.id = "entries";
 
       //generates first wikipedia search result list
-      for (let i = 0; arrOfEntries.length; i++) {
+      for (let i = 0; i < arrOfEntries.length; i++) {
         let div = document.createElement("div");
         entries.appendChild(div);
-        let h2 = document.createElement("h2");
-        div.appendChild(h2);
-        h2.innerHTML = arrOfEntries[i][1].title;
+        div.setAttribute("class", "entryDiv");
+        let spanTitle = document.createElement("span");
+        div.appendChild(spanTitle);
+        spanTitle.setAttribute("class", "entryTitle");
+        spanTitle.innerHTML = arrOfEntries[i][1].title + "<br>";
         let wikilink = document.createElement("a");
         div.appendChild(wikilink);
         wikilink.setAttribute("href", arrOfEntries[i][1].canonicalurl);
         wikilink.setAttribute("target", "_blank");
         wikilink.innerHTML = arrOfEntries[i][1].canonicalurl;
-        let extract = document.createElement("p");
-        div.appendChild(extract);
-        extract.innerHTML = arrOfEntries[i][1].extract;
+        let spanExtract = document.createElement("span");
+        div.appendChild(spanExtract);
+        spanExtract.innerHTML = "<br>" + arrOfEntries[i][1].extract;
       }
     } else {
       var newEntries = document.createElement("div");
@@ -70,20 +84,22 @@ function submitButtonHandler() {
       entriesContainer.replaceChild(newEntries, entriesContainer.firstChild);
 
       //generates new wikipedia search result list
-      for (let i = 0; arrOfEntries.length; i++) {
+      for (let i = 0; i < arrOfEntries.length; i++) {
         let div = document.createElement("div");
         newEntries.appendChild(div);
-        let h2 = document.createElement("h2");
-        div.appendChild(h2);
-        h2.innerHTML = arrOfEntries[i][1].title;
+        div.setAttribute("class", "entryDiv");
+        let spanTitle = document.createElement("span");
+        div.appendChild(spanTitle);
+        spanTitle.setAttribute("class", "entryTitle");
+        spanTitle.innerHTML = arrOfEntries[i][1].title + "<br>";
         let wikilink = document.createElement("a");
         div.appendChild(wikilink);
         wikilink.setAttribute("href", arrOfEntries[i][1].canonicalurl);
         wikilink.setAttribute("target", "_blank");
         wikilink.innerHTML = arrOfEntries[i][1].canonicalurl;
-        let extract = document.createElement("p");
-        div.appendChild(extract);
-        extract.innerHTML = arrOfEntries[i][1].extract;
+        let spanExtract = document.createElement("span");
+        div.appendChild(spanExtract);
+        spanExtract.innerHTML = "<br>" + arrOfEntries[i][1].extract;
       }
     }
   }
