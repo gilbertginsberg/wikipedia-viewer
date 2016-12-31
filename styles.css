@@ -95,7 +95,7 @@ a:link#randomBtn {
   display: flex;
 }
 
-#entries {
+#entries, #newEntries {
   width: 100%;
   display: flex;
   flex-direction: column;
