@@ -31,23 +31,21 @@ body {
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  width: 55%;
   text-align: center;
 }
 
-#formish div {
+#formish #controls {
   display: flex;
 }
 
 #formish input, button {
   border-radius: 10px;
   margin: 2px;
-  padding: 1px;
+  padding: 3px;
 }
 
 #formish #searchTerm {
   height: 51.25px;
-  width: 91%;
   font-size: 125%;
   border: 1px solid #131f20;
   box-sizing: border-box;
@@ -55,7 +53,6 @@ body {
 
 #formish #submitBtn {
   height: 51.25px;
-  width: 29%;
   font-size: 100%;
   background-color: #5F9EA0;
   border: 1px solid #131f20;
